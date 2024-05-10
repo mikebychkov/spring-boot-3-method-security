@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+@Service("myUDS")
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
