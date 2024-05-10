@@ -2,6 +2,8 @@ package com.mikebychkov.methodsecurity.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,11 @@ public class MyController {
     @GetMapping("/info")
     public ResponseEntity<String> getInfo() {
 
-        return ResponseEntity.ok("info");
+        return ResponseEntity.ok(getUsername());
+    }
+
+    public String getUsername() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        return securityContext.getAuthentication().getName();
     }
 }

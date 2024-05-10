@@ -1,1 +1,5 @@
-spring.application.name=method-security
+spring:
+  application:
+    name: method-security
+
+# TODO: h2 db config + bootstrap data
