@@ -1,5 +1,6 @@
 package com.mikebychkov.methodsecurity.controller;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContext;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/my")
+@Log4j2
 public class MyController {
 
     @GetMapping("/some")
@@ -33,6 +35,7 @@ public class MyController {
 
     public String getUsername() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
+        log.info(securityContext.getAuthentication().getPrincipal());
         return securityContext.getAuthentication().getName();
     }
 }
